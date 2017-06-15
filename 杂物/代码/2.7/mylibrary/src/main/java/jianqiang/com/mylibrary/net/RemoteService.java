@@ -1,7 +1,6 @@
 package jianqiang.com.mylibrary.net;
 
 import android.os.Handler;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.squareup.okhttp.Call;
@@ -24,9 +23,6 @@ import jianqiang.com.mylibrary.cache.CacheManager;
 import jianqiang.com.mylibrary.engine.GlobalApplication;
 import jianqiang.com.mylibrary.mockdata.MockService;
 import jianqiang.com.mylibrary.utils.BaseUtils;
-import rx.Observable;
-import rx.Subscriber;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by jianqiang on 16/11/13.

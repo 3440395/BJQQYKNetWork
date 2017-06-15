@@ -2,7 +2,6 @@ package jianqiang.com.youngheart.activity.others;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,9 +22,6 @@ import jianqiang.com.youngheart.engine.YoungHeartApplication;
 import jianqiang.com.youngheart.entity.CinemaBean;
 import jianqiang.com.youngheart.entity.Movie;
 import jianqiang.com.youngheart.entity.MovieList;
-import rx.Observable;
-import rx.Subscriber;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppBaseActivity {
 	private Button btnLogin;

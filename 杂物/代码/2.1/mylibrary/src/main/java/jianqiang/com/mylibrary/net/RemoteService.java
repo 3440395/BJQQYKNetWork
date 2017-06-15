@@ -14,7 +14,6 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import jianqiang.com.mylibrary.activity.BaseActivity;
 import jianqiang.com.mylibrary.utils.Utils;
 
 /**

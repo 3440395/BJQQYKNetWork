@@ -5,11 +5,10 @@ import android.content.res.XmlResourceParser;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import jianqiang.com.mylibrary.R;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
+import jianqiang.com.mylibrary.R;
 import jianqiang.com.mylibrary.engine.GlobalApplication;
 
 public class UrlConfigManager {
