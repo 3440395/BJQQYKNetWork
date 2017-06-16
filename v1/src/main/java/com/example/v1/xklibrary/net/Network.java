@@ -1,10 +1,17 @@
-package com.example.v1.xklibrary;
+package com.example.v1.xklibrary.net;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.example.v1.xklibrary.Data;
+import com.example.v1.xklibrary.MyCallback;
+import com.example.v1.xklibrary.Params;
 import com.example.v1.xklibrary.activity.BaseActivity;
+import com.example.v1.xklibrary.api.Api;
+import com.example.v1.xklibrary.api.ApiUtil;
+import com.example.v1.xklibrary.cache.CacheItem;
+import com.example.v1.xklibrary.cache.CacheManager;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -124,7 +131,7 @@ public class Network {
                         }
                     });
 
-                    if (api1.getExceed() > 0 && !focusRefresh) {//这个数据需要缓存,第二个条件是强制刷新，避免客户端和服务端的缓存叠加起来的时间很长
+                    if (api1.getExceed() > 0) {//这个数据需要缓存
                         CacheManager.saveCache(api1.getApi(), data.getResult().toString(), api1.getExceed());
                     }
 
@@ -156,7 +163,7 @@ public class Network {
 
 
         //执行请求前优先取缓存
-        if (api1.getExceed() > 0) {//该api是可缓存类型，那么可能有缓存
+        if (api1.getExceed() > 0 && !focusRefresh) {//该api是可缓存类型，那么可能有缓存,第二个条件是强制刷新，避免客户端和服务端的缓存叠加起来的时间很长
             final CacheItem cache = CacheManager.getCache(api1.getApi());
             if (cache != null) {
                 //有缓存，通知callback，然后return

@@ -52,7 +52,7 @@ public class Data {
     private String errorMessage;
     private Result result;
 
-    class Result {
+    public class Result {
         @Override
         public String toString() {
             return "Result{" +

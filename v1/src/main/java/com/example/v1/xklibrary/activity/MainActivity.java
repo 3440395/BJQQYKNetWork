@@ -1,10 +1,12 @@
-package com.example.v1.xklibrary;
+package com.example.v1.xklibrary.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-import com.example.v1.xklibrary.activity.BaseActivity;
+import com.example.v1.xklibrary.LogUtil;
+import com.example.v1.xklibrary.Params;
+import com.example.v1.xklibrary.net.Network;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,7 @@ public class MainActivity extends BaseActivity {
                         LogUtil.d("MainActivity:onSuccess--->"+content);
                         Toast.makeText(MainActivity.this,content+"111",Toast.LENGTH_SHORT).show();
                     }
-                });
+                },true);
             }
         }).start();
     }

@@ -1,4 +1,4 @@
-package com.example.v1.xklibrary;
+package com.example.v1.xklibrary.cache;
 
 /**
  * Created by xuekai on 2017/6/16.
