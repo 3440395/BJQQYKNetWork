@@ -29,9 +29,9 @@ public class ApiUtil {
 
     public static Api getApi(String api) {
         if (api.equals("getMovieDetail")) {
-            return new Api("/movie/getmoviedetail", "get", 1000);
+            return new Api("/movie/getmoviedetail", "get", 100);
         } else if (api.equals("registerUser")) {
-            return new Api("/others/register", "post", 2000);
+            return new Api("/others/register", "post", 100);
         }
         return null;
     }

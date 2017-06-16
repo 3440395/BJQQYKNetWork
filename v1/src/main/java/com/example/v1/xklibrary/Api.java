@@ -5,16 +5,37 @@ package com.example.v1.xklibrary;
  */
 
 public class Api {
+    private String api;
     private String url;
     private String method;
-    private long readoutTime;
+    //过期时间，秒
+    private long exceed;
 
-    public Api(String url, String method, long readoutTime) {
+    private String mockClass;
+
+
+    public Api(String url, String method, long exceed) {
         this.url = url;
         this.method = method;
-        this.readoutTime = readoutTime;
+        this.exceed = exceed;
     }
 
+    public String getMockClass() {
+        return mockClass;
+    }
+
+    public void setMockClass(String mockClass) {
+        this.mockClass = mockClass;
+    }
+
+    //key
+    public String getApi() {
+        return api;
+    }
+
+    public void setApi(String api) {
+        this.api = api;
+    }
     public String getUrl() {
         return url;
     }
@@ -31,11 +52,11 @@ public class Api {
         this.method = method;
     }
 
-    public long getReadoutTime() {
-        return readoutTime;
+    public long getExceed() {
+        return exceed;
     }
 
-    public void setReadoutTime(long readoutTime) {
-        this.readoutTime = readoutTime;
+    public void setExceed(long readoutTime) {
+        this.exceed = exceed;
     }
 }
