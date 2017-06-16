@@ -1,6 +1,5 @@
 package com.example.v1.xklibrary;
 
-import com.example.v1.baobaomylibrary.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -11,8 +10,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String [] args){
 //        new Main().doPost();
-        String s = Utils.UrlEncodeUnicode("薛凯abc123!@#+_/?");
-        System.out.println(s);
     }
     private static final String TAG = "Network";
 

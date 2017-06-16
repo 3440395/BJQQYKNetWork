@@ -1,5 +1,8 @@
 package com.example.v1.xklibrary;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -18,6 +21,7 @@ public class Network {
     private static Network network;
     private static OkHttpClient okHttpClient;
     private String baseUrl = "http://127.0.0.1:8888";
+    private static Handler handler;
 
     private Network() {
 
@@ -27,6 +31,7 @@ public class Network {
         if (network == null) {
             network = new Network();
             okHttpClient = new OkHttpClient();
+            handler = new Handler(Looper.myLooper());
         }
         return network;
     }
@@ -37,7 +42,7 @@ public class Network {
             @Override
             public void onFailure(Request request, IOException e) {
                 e.printStackTrace();
-                callback.onFail("网络问题");
+                handler.post(() -> callback.onFail("网络问题"));
             }
 
             @Override
@@ -47,9 +52,10 @@ public class Network {
                 System.out.println(string);
                 Data data = gson.fromJson(string, Data.class);
                 if (data.getIsError() == 0) {
-                    callback.onSuccess(data.getResult().toString());
+                    handler.post(() -> callback.onSuccess(data.getResult().toString()));
+
                 } else {
-                    callback.onFail(data.getErrorMessage() + "");
+                    handler.post(() -> callback.onFail(data.getErrorMessage() + ""));
                 }
             }
         };
