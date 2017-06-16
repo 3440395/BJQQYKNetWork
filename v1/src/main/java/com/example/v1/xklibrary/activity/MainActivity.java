@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
                         LogUtil.d("MainActivity:onSuccess--->"+content);
                         Toast.makeText(MainActivity.this,content+"111",Toast.LENGTH_SHORT).show();
                     }
-                },true);
+                },true,-100);
             }
         }).start();
     }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.example.v1.xklibrary.MyCallback;
+import com.example.v1.xklibrary.net.Network;
 
 /**
  * Created by xuekai on 2017/6/16.
@@ -34,5 +35,11 @@ public class BaseActivity extends Activity {
             dialog.setTitle(errorMessage);
             dialog.show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Network.getInstance().cancleAllRequest();
     }
 }

@@ -11,6 +11,8 @@ public class Api {
     //过期时间，秒
     private long exceed;
 
+    private int retryTimes;
+
     private String mockClass;
 
 
@@ -18,6 +20,14 @@ public class Api {
         this.url = url;
         this.method = method;
         this.exceed = exceed;
+    }
+
+    public int getRetryTimes() {
+        return retryTimes;
+    }
+
+    public void setRetryTimes(int retryTimes) {
+        this.retryTimes = retryTimes;
     }
 
     public String getMockClass() {
