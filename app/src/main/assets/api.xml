@@ -1,0 +1,9 @@
+<api>
+    <node
+        exceed="200"
+        format="xml"
+        key="getMovieList"
+        method="post"
+        mockClass="com.xk.bjqqyknetwork.mock.MovieListMock"
+        retryTimes="2" />
+</api>
