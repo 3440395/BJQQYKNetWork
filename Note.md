@@ -38,8 +38,8 @@ http://www.cnblogs.com/xiaobaiyey/p/6442282.html?utm_source=itdadao&utm_medium=r
 - 把所有的URL统一管理
 - 数据缓存
 - 重试
-- 取消请求
+- 取消请求:rx帮忙处理
 - 本地时间校准
 - 错误提示
-- dialog
+- dialog:由rx来管理
 

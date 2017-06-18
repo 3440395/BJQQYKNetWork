@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 
 public class ApiManager {
-    private static final long DEFAULT_EXCEED = 100;
-    private static final String DEFAULT_METHOD = "GET";
+    private static final long DEFAULT_EXCEED = 20;
+    private static final String DEFAULT_METHOD = "get";
     private static final int DEFAULT_RETRY_TIMES = 5;
     private static final String DEFAULT_FORMAT = "json";
     private static ArrayList<Api> apiList;

@@ -27,11 +27,12 @@ public class RxTest {
             @Override
             public void subscribe(@NonNull ObservableEmitter e) throws Exception {
                 System.out.println("进行了net");
+                e.onComplete();
             }
         });
 
         Observable.concat(diskObservable, netObservable)
-                .first(diskObservable)
+                .first("")
                 .subscribe();
     }
 }

@@ -5,15 +5,15 @@ package com.xk.bjqqyknetwork.entry;
  */
 
 public class Movie {
-    private int id;
+    private int movieId;
     private String movieName;
 
     public int getId() {
-        return id;
+        return movieId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int movieId) {
+        this.movieId = movieId;
     }
 
     public String getMovieName() {
@@ -27,7 +27,7 @@ public class Movie {
     @Override
     public String toString() {
         return "Movie{" +
-                "id=" + id +
+                "movieId=" + movieId +
                 ", movieName='" + movieName + '\'' +
                 '}';
     }

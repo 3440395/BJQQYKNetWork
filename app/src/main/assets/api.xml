@@ -5,5 +5,10 @@
         key="getMovieList"
         method="post"
         mockClass="com.xk.bjqqyknetwork.mock.MovieListMock"
-        retryTimes="2" />
+        retryTimes="3" />
+
+    <node
+        exceed="10"
+        key="getMovie"
+    />
 </api>
