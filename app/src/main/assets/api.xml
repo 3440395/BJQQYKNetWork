@@ -8,7 +8,7 @@
         retryTimes="3" />
 
     <node
-        exceed="10"
+        exceed="5"
         key="getMovie"
     />
 </api>

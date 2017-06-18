@@ -3,12 +3,12 @@ package com.xk.bjqqyknetwork;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.myhttp.HttpBaseActivity;
 import com.example.myhttp.net.MCallback;
 import com.example.myhttp.net.NetWork;
 import com.example.myhttp.net.Params;
-import com.example.myhttp.util.LogUtil;
 import com.example.myhttp.xml.BaseXmlParser;
 import com.xk.bjqqyknetwork.entry.Movie;
 
@@ -17,8 +17,10 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends HttpBaseActivity {
     @Override
@@ -33,12 +35,12 @@ public class MainActivity extends HttpBaseActivity {
             public Movie parser(String xml) {
                 return null;
             }
-        });
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
         getMovie.subscribe(new Consumer<Movie>() {
             @Override
             public void accept(@NonNull Movie o) throws Exception {
-                LogUtil.d("MainActivity:accept-->"+o);
-
+                Toast.makeText(MainActivity.this,o.getMovieName(),Toast.LENGTH_SHORT).show();
             }
         });
     }

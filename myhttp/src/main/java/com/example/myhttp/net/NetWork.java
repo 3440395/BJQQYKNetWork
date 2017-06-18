@@ -150,8 +150,6 @@ public class NetWork {
 
             }
         };
-
-
         //缓存逻辑，RxJava
         Observable<String> disk = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
@@ -190,11 +188,9 @@ public class NetWork {
 
                 Call call = okHttpClient.newCall(req);
                 LogUtil.d("NetWork:invoke-->发起网络");
-
-
                 call.enqueue(internalCallback);
+                Thread.sleep(5000);
                 e.onComplete();
-
             }
 
         }).subscribeOn(Schedulers.io());
