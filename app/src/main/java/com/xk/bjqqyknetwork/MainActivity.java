@@ -81,7 +81,7 @@ public class MainActivity extends HttpBaseActivity {
         return Observable.create(new ObservableOnSubscribe<Movie>() {
             @Override
             public void subscribe(@NonNull final ObservableEmitter<Movie> e) throws Exception {
-                NetWork.getInstance().invoke(key, params, retryTimes, forceUpdate, new MCallback<Movie>() {
+                NetWork.getInstance().invoke(key, params, forceUpdate, new MCallback<Movie>() {
                     @Override
                     public void onSuccess(Movie t) {
                         e.onNext(t);

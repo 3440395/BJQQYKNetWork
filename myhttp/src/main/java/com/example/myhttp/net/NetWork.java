@@ -33,7 +33,7 @@ import okhttp3.Response;
 
 public class NetWork {
     private OkHttpClient okHttpClient;
-//    private Handler handler;
+    //    private Handler handler;
     private static NetWork netWork;
     private final ApiManager apiManager;
     private Gson gson;
@@ -67,6 +67,23 @@ public class NetWork {
     }
 
 
+
+    public <T> void invoke(String key, List<Params> params) {
+        invoke(key, params, -100, false, null, null);
+    }
+
+    public <T> void invoke(String key, List<Params> params, MCallback<T> callback) {
+        invoke(key, params, -100, false, callback, null);
+    }
+
+    public <T> void invoke(String key, List<Params> params, boolean forceUpdate, MCallback<T> callback) {
+        invoke(key, params, -100, forceUpdate, callback, null);
+    }
+
+    public <T> void invoke(String key, List<Params> params, boolean forceUpdate, MCallback<T> callback, BaseXmlParser<T> parser) {
+        invoke(key, params, -100, forceUpdate, callback, parser);
+    }
+
     /**
      * TODO 1.baseActivity传入空，设置tag的时候注意
      *
@@ -78,9 +95,9 @@ public class NetWork {
      * @param parser
      * @param <T>
      */
-    public <T> void invoke(String key, List<Params> params
+    private <T> void invoke(String key, List<Params> params
             , int retryTimes, boolean forceUpdate,
-                           MCallback<T> callback, BaseXmlParser<T> parser) {
+                            MCallback<T> callback, BaseXmlParser<T> parser) {
         Api api = apiManager.findApi(key);
         //强制更新
         if (forceUpdate) {
