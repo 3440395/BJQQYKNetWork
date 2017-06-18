@@ -99,6 +99,29 @@ public class ApiManager {
                                             api.setFormat(format);
                                         }
                                         break;
+                                    }else{
+                                        Api api1 = new Api();
+                                        String exceed = xmlParser.getAttributeValue(null, "exceed");
+                                        if (exceed != null) {
+                                            api1.setExceed(Long.parseLong(exceed));
+                                        }
+                                        String method = xmlParser.getAttributeValue(null, "method");
+                                        if (method != null) {
+                                            api1.setMethod(method);
+                                        }
+                                        String mockClass = xmlParser.getAttributeValue(null, "mockClass");
+                                        if (mockClass != null) {
+                                            api1.setMockClass(mockClass);
+                                        }
+                                        String retryTimes = xmlParser.getAttributeValue(null, "retryTimes");
+                                        if (retryTimes != null) {
+                                            api1.setRetryTimes(Integer.parseInt(retryTimes));
+                                        }
+                                        String format = xmlParser.getAttributeValue(null, "format");
+                                        if (format != null) {
+                                            api1.setFormat(format);
+                                        }
+                                        apiList.add(api1);
                                     }
                                 }
                             }

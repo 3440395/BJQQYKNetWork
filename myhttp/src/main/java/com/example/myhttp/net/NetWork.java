@@ -1,8 +1,5 @@
 package com.example.myhttp.net;
 
-import android.os.Handler;
-import android.os.Looper;
-
 import com.example.myhttp.api.Api;
 import com.example.myhttp.api.ApiManager;
 import com.example.myhttp.cache.CacheManager;
@@ -36,7 +33,7 @@ import okhttp3.Response;
 
 public class NetWork {
     private OkHttpClient okHttpClient;
-    private Handler handler;
+//    private Handler handler;
     private static NetWork netWork;
     private final ApiManager apiManager;
     private Gson gson;
@@ -57,8 +54,7 @@ public class NetWork {
                 .connectTimeout(2, TimeUnit.SECONDS)
                 .build();
 
-        handler = new Handler(Looper.getMainLooper());
-        handler = new Handler(Looper.getMainLooper());
+//        handler = new Handler(Looper.getMainLooper());
         apiManager = new ApiManager();
         gson = new Gson();
     }
@@ -90,6 +86,7 @@ public class NetWork {
         if (forceUpdate) {
             api.setExceed(0);
         }
+
         int retryTimesInApi = api.getRetryTimes();
         final int[] finalRetryTimes = new int[1];
         finalRetryTimes[0] = retryTimes;
@@ -102,7 +99,8 @@ public class NetWork {
                     return;
                 }
                 if (callback != null) {
-                    handler.post(() -> callback.onFailed("网络错误"));
+//                    handler.post(() -> callback.onFailed("网络错误"));
+                    callback.onFailed("网络错误");
                 }
 
             }
@@ -115,7 +113,8 @@ public class NetWork {
                         ResponseEntry responseEntry = gson.fromJson(data, ResponseEntry.class);
                         if (responseEntry.getErrorCode() != 0) {
                             if (callback != null) {
-                                handler.post(() -> callback.onFailed(responseEntry.getErrorMsg()));
+//                                handler.post(() -> callback.onFailed(responseEntry.getErrorMsg()));
+                                callback.onFailed(responseEntry.getErrorMsg());
                             }
 
                         } else {
@@ -129,7 +128,8 @@ public class NetWork {
                             LogUtil.d("NetWork:onResponse-->从网络拿的数据");
                             if (callback != null) {
 
-                                handler.post(() -> callback.onSuccess(t));
+//                                handler.post(() -> callback.onSuccess(t));
+                                callback.onSuccess(t);
                             }
 
                         }
@@ -144,7 +144,8 @@ public class NetWork {
                     }
                 } else {
                     if (callback != null) {
-                        handler.post(() -> callback.onFailed("服务器返回错误"));
+//                        handler.post(() -> callback.onFailed("服务器返回错误"));
+                        callback.onFailed("服务器返回错误");
                     }
                 }
 
@@ -159,14 +160,15 @@ public class NetWork {
                     if (content != null) {
                         if (callback != null) {
                             T t = gson.fromJson(content, callback.type);
-
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    LogUtil.d("NetWork:run-->从缓存拿的数据");
-                                    callback.onSuccess(t);
-                                }
-                            });
+                            LogUtil.d("NetWork:run-->从缓存拿的数据");
+                            callback.onSuccess(t);
+//                            handler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    LogUtil.d("NetWork:run-->从缓存拿的数据");
+//                                    callback.onSuccess(t);
+//                                }
+//                            });
                         }
                         e.onNext("");
                     }
@@ -193,7 +195,7 @@ public class NetWork {
                 e.onComplete();
             }
 
-        }).subscribeOn(Schedulers.io());
+        });
         Observable.concat(disk, network)
                 .first("")
                 .subscribe();
@@ -232,7 +234,7 @@ public class NetWork {
     }
 
 
-//    public  Observable invokeByRx(String key, List<Params> params
+//    public <T>Observable invokeByRx(String key, List<Params> params
 //            , int retryTimes, boolean forceUpdate, BaseXmlParser<T> parser) {
 //        return Observable.create(new ObservableOnSubscribe<T>() {
 //            @Override
@@ -251,7 +253,7 @@ public class NetWork {
 //                }, parser);
 //            }
 //        });
-//
+
 //    }
 //    /**
 //     * 这里通过okhttpclient的cancel方法，通过tag来取消，tag在构建request的时候指定

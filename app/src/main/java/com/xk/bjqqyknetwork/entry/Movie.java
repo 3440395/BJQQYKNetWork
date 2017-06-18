@@ -26,7 +26,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
+        return "Movie--{" +
                 "movieId=" + movieId +
                 ", movieName='" + movieName + '\'' +
                 '}';
