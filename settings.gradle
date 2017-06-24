@@ -1,1 +1,1 @@
-include ':app',  ':v1', ':myhttp'
+include ':app', ':myhttp'

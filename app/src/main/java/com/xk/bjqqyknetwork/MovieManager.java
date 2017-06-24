@@ -15,7 +15,7 @@ public class MovieManager {
 //        NetWork.getInstance().invoke(null, "", null, -100, false, new MCallback<Movie>() {
 //            @Override
 //            public void onSuccess(Movie movie) {
-//
+//NI你好
 //            }
 //
 //            @Override
